@@ -19,12 +19,6 @@ class FaceDetectorViewController: UIViewController {
     var previewLayer: AVCaptureVideoPreviewLayer!
     var cameraOutputQueue = DispatchQueue(label: "CameraOutputQueue")
     var sequenceRequestHandler = VNSequenceRequestHandler()
-    
-    private enum WhichCamera {
-        case back
-        case front
-    }
-    private var whichCamera: WhichCamera = .front
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,35 +55,6 @@ class FaceDetectorViewController: UIViewController {
         cameraView.layer.addSublayer(previewLayer)
         captureSession.startRunning()
     }
-    
-    @IBAction func switchCamera(_ sender: Any) {
-        // remove inputs
-        if let inputs = captureSession.inputs as? [AVCaptureDeviceInput] {
-            for input in inputs {
-                captureSession.removeInput(input)
-            }
-        }
-        
-        // add input back in
-        var captureDevice: AVCaptureDevice?
-        if whichCamera == .back {
-            captureDevice = getFrontCamera()
-            whichCamera = .front
-        } else {
-            captureDevice = getBackCamera()
-            whichCamera = .back
-        }
-        guard let captureDevice = captureDevice else {
-            failAlert("No camera detected")
-            return
-        }
-        do {
-            let videoInput = try AVCaptureDeviceInput(device: captureDevice)
-            captureSession.addInput(videoInput)
-        } catch {
-            failAlert("Failed to switch camera")
-        }
-    }
 
     private func getFrontCamera() -> AVCaptureDevice? {
         return AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
@@ -115,14 +80,7 @@ extension FaceDetectorViewController: AVCaptureVideoDataOutputSampleBufferDelega
         let detectFaceRequest = VNDetectFaceRectanglesRequest(completionHandler: detectFaceRequestHandler)
         
         do {
-            var orientation: CGImagePropertyOrientation = .leftMirrored
-            if whichCamera == .front {
-                orientation = .leftMirrored
-            } else {
-                orientation = .left
-            }
-                
-            try sequenceRequestHandler.perform([detectFaceRequest], on: imageBuffer, orientation: orientation)
+            try sequenceRequestHandler.perform([detectFaceRequest], on: imageBuffer, orientation: .leftMirrored)
         } catch {
             print(error.localizedDescription)
         }

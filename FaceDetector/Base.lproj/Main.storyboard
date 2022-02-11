@@ -49,25 +49,11 @@
                                     <constraint firstItem="Ztz-P7-Ko3" firstAttribute="centerX" secondItem="JWb-po-Uwk" secondAttribute="centerX" id="RbW-L3-7Ba"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHT-jF-Bxp">
-                                <rect key="frame" x="354" y="54" width="40" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="40" id="Phq-dO-p5g"/>
-                                    <constraint firstAttribute="height" constant="40" id="rBa-ze-FuU"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="switch-camera-icon"/>
-                                <connections>
-                                    <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="yPR-va-0ga"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="JWb-po-Uwk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="6Ap-ib-LgU"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hHT-jF-Bxp" secondAttribute="trailing" constant="20" id="8Ev-th-EQv"/>
-                            <constraint firstItem="hHT-jF-Bxp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="EFW-p6-HDc"/>
                             <constraint firstAttribute="bottom" secondItem="JWb-po-Uwk" secondAttribute="bottom" id="YDi-lV-hUS"/>
                             <constraint firstItem="7DK-yo-azG" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Z3y-Qf-eZf"/>
                             <constraint firstItem="hIo-1j-QpL" firstAttribute="leading" secondItem="7DK-yo-azG" secondAttribute="leading" id="fCm-fh-qM8"/>
@@ -94,7 +80,6 @@
     </scenes>
     <resources>
         <image name="people-icon" width="96" height="96"/>
-        <image name="switch-camera-icon" width="100" height="100"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
