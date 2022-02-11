@@ -60,10 +60,6 @@ class FaceDetectorViewController: UIViewController {
         return AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .front)
     }
     
-    private func getBackCamera() -> AVCaptureDevice? {
-        return AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)
-    }
-    
     private func failAlert(_ title: String, message: String? = "") {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
